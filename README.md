@@ -1,6 +1,6 @@
-# dt_cordova_and_server_vagrant
+# Vagrant for Cordova and LAMP stack development
 
-a vagrant set up for doing cordova dev and server dev (latter using php and mysql)
+A vagrant set up for doing cordova dev and server dev (latter using php and mysql)
 
 the machine has
 - php
