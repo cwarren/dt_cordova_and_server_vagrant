@@ -162,11 +162,15 @@ echo -e "\n\n\nNOTE: automated securing of mysql not working; be"
 echo "sure to run"
 echo "    \$ mysql_secure_installation"
 echo "manually!"
-
 echo
 echo "android SDK must me handled manually because the license acceptance"
 echo "doesn't seem to be able to be done programatically"
-
 echo "    $ cd \$ANDROID_HOME/tools"
 echo "    $ sudo ./android update sdk --no-ui"
-EOF
+echo
+echo "also, don't forget to configure git:"
+echo "    $ git config --global user.name \"yourusername\""
+echo "    $ git config --global user.email=youremail@provider.com"
+echo "and maybe also"
+echo "    $ git config --global core.safecrlf false"
+echo "to avoid a bunch of warning messages that are usually irrelevant"
