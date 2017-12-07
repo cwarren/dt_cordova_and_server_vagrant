@@ -76,6 +76,9 @@ unzip -d /opt/gradle gradle-4.3.1-bin.zip
 
 # apt-get -y install android-studio
 
+echo -e "\n--- Installing vue-cli packages (via npm) ---\n"
+npm install -g vue-cli
+
 echo -e "\n--- Installing PHP-specific packages ---\n"
 apt-get -y install php 
 apt-get -y install php-zip
