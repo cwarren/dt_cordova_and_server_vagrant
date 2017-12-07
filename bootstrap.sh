@@ -39,9 +39,14 @@ cat >> ~vagrant/.gitconfig <<EOF
         autocrlf = false
 EOF
 
-echo -e "\n--- Install cordova packages ---\n"
+echo -e "\n--- Install node and npm packages ---\n"
 apt-get -y install nodejs npm
 ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g n
+n stable
+# the above couple of commands update node to the latest stable version
+
+echo -e "\n--- Install cordova packages ---\n"
 npm install -g cordova
 
 
@@ -71,7 +76,7 @@ unzip -d /opt/gradle gradle-4.3.1-bin.zip
 
 
 echo -e "\n--- Installing vue-cli packages (via npm) ---\n"
-npm install -g vue-cli
+npm install -g vue-cli --save
 
 
 echo -e "\n--- Installing PHP-specific packages ---\n"
