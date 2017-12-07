@@ -55,29 +55,24 @@ mkdir -p $ANDROID_HOME
 cd $ANDROID_HOME
 wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
 unzip tools_r25.2.3-linux.zip
-# NOTE: ideally the below commands would do the SDK install/update, but it doesn't work because
-# the sdk update has a license acceptance step which the yes command doesn't seem to satisfy
-# cd tools
-# yes | ./android update sdk --no-ui
+
+# answer yes to all prompts, then install the sdk
+# args 1,2,3 is a filter to install sdk tools, platform tools, latest build tools, android platform api 26)
+( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) \
+    | android update sdk -u -a -t 1,2,3,41
+
 chown -R vagrant /home/vagrant/.android
 chgrp -R vagrant /home/vagrant/.android
-
 
 mkdir -p $GRADLE_HOME
 cd $GRADLE_HOME
 wget https://services.gradle.org/distributions/gradle-4.3.1-bin.zip
 unzip -d /opt/gradle gradle-4.3.1-bin.zip
 
-# wget http://dl.google.com/android/android-sdk_r24.2-linux.tgz
-# tar -xvf android-sdk_r24.2-linux.tgz
-# cd android-sdk-linux/tools
-# # install all sdk packages
-# ./android update sdk --no-ui
-
-# apt-get -y install android-studio
 
 echo -e "\n--- Installing vue-cli packages (via npm) ---\n"
 npm install -g vue-cli
+
 
 echo -e "\n--- Installing PHP-specific packages ---\n"
 apt-get -y install php 
@@ -165,12 +160,6 @@ echo -e "\n\n\nNOTE: automated securing of mysql not working; be"
 echo "sure to run"
 echo "    \$ mysql_secure_installation"
 echo "manually!"
-echo
-echo "android SDK must me handled manually because the license acceptance"
-echo "doesn't seem to be able to be done programatically"
-echo "    $ cd \$ANDROID_HOME/tools"
-echo "    $ sudo ./android update sdk --no-ui"
-echo
 echo "also, don't forget to configure git:"
 echo "    $ git config --global user.name \"yourusername\""
 echo "    $ git config --global user.email=youremail@provider.com"
